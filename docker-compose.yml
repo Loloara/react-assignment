@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  mysql-server:
+    image: mysql:8.0.17
+    command: --lower_case_table_names=1 --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=my_database
+      - MYSQL_ROOT_HOST=%
+
+  app: &app
+    image: grepp/node-webapp:1.0.0
+    tmpfs:
+      - /tmp
+
+  node: &node
+    <<: *app
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app:cached
+      - node_modules:/app/node_modules
+      - public:/app/server/src/public
+      - build:/app/server/build
+      - client_node_modules:/app/client/node_modules
+      - server_node_modules:/app/server/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - mysql-server
+
+  shell:
+    <<: *node
+    command: /bin/bash
+    ports:
+      - '5000:5000'
+
+  server:
+    <<: *node
+    command: yarn run dev
+    ports:
+      - '5000:5000'
+
+volumes:
+  mysql:
+  node_modules:
+  public:
+  build:
+  client_node_modules:
+  server_node_modules:
+

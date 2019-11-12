@@ -1,0 +1,24 @@
+{
+  "name": "prgms-daangn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "heroku-postbuild": "yarn workspace server build && yarn workspace client build",
+    "start": "yarn workspace server start",
+    "dev": "yarn workspace client watch & yarn workspace server start:dev",
+    "test": "yarn server:test",
+    "client:lint": "yarn workspace client lint",
+    "client:watch": "yarn workspace client watch",
+    "client:build": "yarn workspace client build",
+    "client:dev": "yarn workspace client dev",
+    "server:build": "yarn workspace server build",
+    "server:test": "yarn workspace server test",
+    "server:test:mocha": "yarn workspace server test:mocha"
+  },
+  "license": "MIT",
+  "workspaces": [
+    "server",
+    "client"
+  ]
+}
