@@ -16,13 +16,19 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
     clickedCategory: -1,
     clickedCatetoryName: "전체"
   }
-  
+
   componentWillMount(): void {
     this.props[STORES.PRODUCTS_STORE].getAllProducts();
   }
 
-  onClickCategory = (category: number, categoryName:String) => {
-    this.setState({ clickedCategory: category, clickedCatetoryName: categoryName })
+  onClickCategory = (category: number) => {
+    const { products } = this.props[STORES.PRODUCTS_STORE];
+    console.log(this.props[STORES.PRODUCTS_STORE])
+    const categorizedProducts = products.filter(item => item.category === category)
+
+    this.props[STORES.PRODUCTS_STORE].setProducts(categorizedProducts)
+    this.props[STORES.PRODUCTS_STORE].setCategory(category)
+    // this.props[STORES.PRODUCTS_STORE]
   }
 
   render() {
@@ -31,40 +37,40 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
       <>
         <FixedTopBar />
         <div className="container container-main-index">
-          <h5 className="container-headline">중고 거래 제품</h5>
+          <h5 className="container-headline">{this.state.clickedCatetoryName}</h5>
           <div className="categories-group">
             <Link
               to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick={() => this.onClickCategory(0, "중고 차량 목록")}
+              onClick={() => this.onClickCategory(0)}
             >
               차량
             </Link>
             <Link
               to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick={() => this.onClickCategory(1, "중고 인기매물 목록")}
+              onClick={() => this.onClickCategory(1)}
             >
               인기매물
             </Link>
             <Link
               to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick={() => this.onClickCategory(2, "중고 가구/인테리어 목록")}
+              onClick={() => this.onClickCategory(2)}
             >
               가구/인테리어
             </Link>
             <Link
               to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick={() => this.onClickCategory(3, "중고 유아동/유아도서 목록")}
+              onClick={() => this.onClickCategory(3)}
             >
               유아동/유아도서
             </Link>
             <Link
               to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick={() => this.onClickCategory(4, "중고 생활/가공식품 목록")}
+              onClick={() => this.onClickCategory(4)}
             >
               생활/가공식품
             </Link>

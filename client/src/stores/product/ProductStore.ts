@@ -7,6 +7,11 @@ class ProductsStore {
   @observable products: ProductDto[] = [];
   @observable detailProduct: ProductDto = {} as ProductDto;
 
+  @observable currentCategory: number = -1;
+
+  // @observable clickedCategory: number = -1;
+  // @observable clickedCategoryTitle: String = ""
+
   constructor(private productService: ProductService) {
   }
 
@@ -23,6 +28,9 @@ class ProductsStore {
   }
 
   @action
+  
+
+  @action
   async registrationProduct(product: ProductRegistrationDto) {
     try {
       const result = await this.productService.registration(product);
@@ -35,6 +43,11 @@ class ProductsStore {
   @action
   setProducts(products: ProductDto[]) {
     this.products = products;
+  }
+
+  @action
+  setCategory(category: number) {
+    this.currentCategory = category
   }
 
   @action
