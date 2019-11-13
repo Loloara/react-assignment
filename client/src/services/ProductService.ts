@@ -23,8 +23,7 @@ export type ProductDto = {
   updatedAt: string;
 }
 
-//const API_HOST = process.env.API_HOST || 'http://localhost:5000/api';
-const API_HOST = 'http://192.168.50.3:5000/api';
+const API_HOST = process.env.API_HOST || 'http://localhost:5000/api';
 
 class ProductService {
 
