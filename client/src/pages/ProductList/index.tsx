@@ -44,9 +44,8 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
       <>
         <FixedTopBar />
         <div className="container container-main-index">
-    <h5 className="container-headline">{this.state.clickedCatetoryName}</h5>
-
-          <div className="categories-group">
+          <h5 className="container-headline">{this.state.clickedCatetoryName}</h5>
+          <div className="categories-group" style={this.state.clickedCategory===-1 ? {} : {display:'none'}}>
             <Link
               to={PAGE_PATHS.PRODUCT_CAR_CATEGORY_LISTS}
               className="btn btn-category"
