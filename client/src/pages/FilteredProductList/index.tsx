@@ -17,22 +17,31 @@ class FilteredProductList extends Component<InjectedProps & RouteComponentProps>
 
   }
 
+  getTitleByCategoryNum(category: number): string {
+
+    if(category === 0) {
+      return "차량"
+    } else if(category === 1) {
+      return "차량2"
+    }
+
+  }
+
   render() {
     const { products } = this.props[STORES.PRODUCTS_STORE];
   
 
     console.log("products", products);
-    console.log("zzz", this.props[STORES.PRODUCTS_STORE].clickedCatetoryName)
+    const title = this.getTitleByCategoryNum(this.props[STORES.PRODUCTS_STORE].currentCategory)
 
     return (
       <>
         <FixedTopBar />
         <div className="container container-main-index">
-          <h5 className="container-headline">{this.state.clickedCatetoryName}</h5>
+          <h5 className="container-headline">{title}</h5>
           <ul className="list-products row">
             {
-
-            filteredProducts.map(v => (
+              products.map(v => (
               <li
                 key={v.id}
                 className="list-products-item col-12 col-md-4 col-lg-3"
