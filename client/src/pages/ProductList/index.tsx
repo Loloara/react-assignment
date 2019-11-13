@@ -31,16 +31,28 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
             >
               차량
             </Link>
-            <Link to={PAGE_PATHS.PRODUCT_LISTS} className="btn btn-category">
+            <Link 
+              to={PAGE_PATHS.PRODUCT_POPULAR_LISTS} 
+              className="btn btn-category"
+            >
               인기매물
             </Link>
-            <Link to={PAGE_PATHS.PRODUCT_LISTS} className="btn btn-category">
+            <Link 
+              to={PAGE_PATHS.PRODUCT_FURNITURE_CATEGORY_LISTS} 
+              className="btn btn-category"
+            >
               가구/인테리어
             </Link>
-            <Link to={PAGE_PATHS.PRODUCT_LISTS} className="btn btn-category">
+            <Link 
+              to={PAGE_PATHS.PRODUCT_CHILD_CATEGORY_LISTS} 
+              className="btn btn-category"
+            >
               유아동/유아도서
             </Link>
-            <Link to={PAGE_PATHS.PRODUCT_LISTS} className="btn btn-category">
+            <Link 
+              to={PAGE_PATHS.PRODUCT_LIFE_CATEGORY_LISTS} 
+              className="btn btn-category"
+            >
               생활/가공식품
             </Link>
           </div>
