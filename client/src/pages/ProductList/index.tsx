@@ -15,7 +15,7 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
 
   state = {
     clickedCategory: -1,
-    clickedCatetoryName: "중고차량목록"
+    clickedCatetoryName: "전체"
   }
 
   componentWillMount(): void {
