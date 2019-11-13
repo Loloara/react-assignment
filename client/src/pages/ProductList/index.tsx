@@ -21,8 +21,9 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
     this.props[STORES.PRODUCTS_STORE].getAllProducts();
   }
 
-  onClickCategory = () => {
-    console.log("aaaa")
+  onClickCategory = (category: String) => {
+    console.log(category)
+    this.setState({ clickedCategory: category })
   }
 
   render() {
@@ -31,13 +32,13 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
       <>
         <FixedTopBar />
         <div className="container container-main-index">
-          <h5 className="container-headline">중고 거래 제품</h5>
+    <h5 className="container-headline">{}</h5>
 
           <div className="categories-group">
             <Link
               to={PAGE_PATHS.PRODUCT_CAR_CATEGORY_LISTS}
               className="btn btn-category"
-              onClick={this.onClickCategory}
+              onClick={this.onClickCategory("car")}
             >
               차량
             </Link>
@@ -70,7 +71,7 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
           </div>
 
           <ul className="list-products row">
-            {products.map(v => (
+            {products.filter(item => item.tag === this.state.clickedCategory).map(v => (
               <li
                 key={v.id}
                 className="list-products-item col-12 col-md-4 col-lg-3"
