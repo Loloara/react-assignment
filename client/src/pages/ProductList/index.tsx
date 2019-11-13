@@ -29,9 +29,16 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
 
   render() {
     const { products } = this.props[STORES.PRODUCTS_STORE];
+
+    console.log("products", products)
+    
     const filterdProducts = this.state.clickedCategory === -1 ?
      products 
      : products.filter(item => item.category === this.state.clickedCategory)
+
+     console.log("filterdProducts", filterdProducts)
+
+     console.log("this.state.clickedCategory", this.state.clickedCategory)
 
     return (
       <>
@@ -43,7 +50,7 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
             <Link
               to={PAGE_PATHS.PRODUCT_CAR_CATEGORY_LISTS}
               className="btn btn-category"
-              onClick={this.onClickCategory(0, "중고차량목록")}
+              onClick={() => this.onClickCategory(0, "중고차량목록")}
             >
               차량
             </Link>
