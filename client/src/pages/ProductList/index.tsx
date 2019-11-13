@@ -14,31 +14,36 @@ interface InjectedProps {
 class ProductList extends Component<InjectedProps & RouteComponentProps> {
 
   state = {
-    clickedCategory: "car"
+    clickedCategory: -1,
+    clickedCatetoryName: "중고차량목록"
   }
 
   componentWillMount(): void {
     this.props[STORES.PRODUCTS_STORE].getAllProducts();
   }
 
-  onClickCategory = (category: String) => {
+  onClickCategory = (category: number, categoryName:String) => {
     console.log(category)
-    this.setState({ clickedCategory: category })
+    this.setState({ clickedCategory: category, clickedCatetoryName: categoryName })
   }
 
   render() {
     const { products } = this.props[STORES.PRODUCTS_STORE];
+    const filterdProducts = this.state.clickedCategory === -1 ?
+     products 
+     : products.filter(item => item.category === this.state.clickedCategory)
+
     return (
       <>
         <FixedTopBar />
         <div className="container container-main-index">
-    <h5 className="container-headline">{}</h5>
+    <h5 className="container-headline">{this.state.clickedCatetoryName}</h5>
 
           <div className="categories-group">
             <Link
               to={PAGE_PATHS.PRODUCT_CAR_CATEGORY_LISTS}
               className="btn btn-category"
-              onClick={this.onClickCategory("car")}
+              onClick={this.onClickCategory(0, "중고차량목록")}
             >
               차량
             </Link>
@@ -71,7 +76,11 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
           </div>
 
           <ul className="list-products row">
-            {products.filter(item => item.tag === this.state.clickedCategory).map(v => (
+            
+            
+            {
+
+            filterdProducts.map(v => (
               <li
                 key={v.id}
                 className="list-products-item col-12 col-md-4 col-lg-3"
