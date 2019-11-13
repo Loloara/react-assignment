@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Link from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import { PAGE_PATHS, STORES } from '~constants';
 import { inject, observer } from 'mobx-react';
 import ProductsStore from '~stores/product/ProductStore';
@@ -11,7 +11,7 @@ interface InjectedProps {
   [STORES.PRODUCTS_STORE]: ProductsStore;
 }
 
-class CarProductList extends Component<InjectedProps> {
+class CarProductList extends Component<InjectedProps & RouteComponentProps> {
   componentWillMount(): void {
     this.props[STORES.PRODUCTS_STORE].getAllProducts();
   }
