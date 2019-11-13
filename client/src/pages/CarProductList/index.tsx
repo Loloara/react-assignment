@@ -1,16 +1,45 @@
 import React, { Component } from 'react';
+import Link from 'react-router-dom';
+import { PAGE_PATHS, STORES } from '~constants';
+import { inject, observer } from 'mobx-react';
+import ProductsStore from '~stores/product/ProductStore';
+import Footer from '~components/Footer';
+import FixedTopBar from '~components/FixedTopBar';
+import Product from '~pages/ProductList/Product';
 
-class CarProductList extends Component {
+interface InjectedProps {
+  [STORES.PRODUCTS_STORE]: ProductsStore;
+}
+
+class CarProductList extends Component<InjectedProps> {
+  componentWillMount(): void {
+    this.props[STORES.PRODUCTS_STORE].getAllProducts();
+  }
+
   render() {
+    const { products } = this.props[STORES.PRODUCTS_STORE];
     return (
       <>
-        <h1>차량</h1>
-        <p>
-          <a href="https://github.com/grepp/daangn-mock">https://github.com/grepp/daangn-mock</a>에서 categorized_index.html를 참고해주세요.
-        </p>
+        <FixedTopBar />
+        <div className="container container-main-index">
+          <h5 className="container-headline">중고 거래 제품</h5>
+          <ul className="list-products row">
+            {products.map(v => (
+              <li
+                key={v.id}
+                className="list-products-item col-12 col-md-4 col-lg-3"
+              >
+                <Link to={`${PAGE_PATHS.PRODUCT}/${v.id}`}>
+                  <Product product={v} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <Footer />
       </>
     );
   }
 }
 
-export default CarProductList;
+export default inject(STORES.PRODUCTS_STORE)(observer(CarProductList));
