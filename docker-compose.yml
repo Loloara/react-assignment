@@ -12,6 +12,7 @@ services:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=my_database
       - MYSQL_ROOT_HOST=%
+      - API_HOST=192.168.50.3
 
   app: &app
     image: grepp/node-webapp:1.0.0
