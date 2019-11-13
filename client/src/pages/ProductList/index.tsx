@@ -12,23 +12,15 @@ interface InjectedProps {
 }
 
 class ProductList extends Component<InjectedProps & RouteComponentProps> {
-  state = {
-    clickedCategory: -1,
-    clickedCatetoryName: "전체"
-  }
-
   componentWillMount(): void {
     this.props[STORES.PRODUCTS_STORE].getAllProducts();
   }
 
   onClickCategory = (category: number) => {
     const { products } = this.props[STORES.PRODUCTS_STORE];
-    console.log(this.props[STORES.PRODUCTS_STORE])
-    const categorizedProducts = products.filter(item => item.category === category)
-
-    this.props[STORES.PRODUCTS_STORE].setProducts(categorizedProducts)
-    this.props[STORES.PRODUCTS_STORE].setCategory(category)
-    // this.props[STORES.PRODUCTS_STORE]
+    const categorizedProducts = products.filter(item => item.category === category);
+    this.props[STORES.PRODUCTS_STORE].setProducts(categorizedProducts);
+    this.props[STORES.PRODUCTS_STORE].setCategory(category);
   }
 
   render() {
@@ -37,7 +29,7 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
       <>
         <FixedTopBar />
         <div className="container container-main-index">
-          <h5 className="container-headline">{this.state.clickedCatetoryName}</h5>
+          <h5 className="container-headline">중고 거래 제품</h5>
           <div className="categories-group">
             <Link
               to={PAGE_PATHS.Filtered_PRODUCT_LISTS}

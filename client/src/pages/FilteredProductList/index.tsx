@@ -12,28 +12,23 @@ interface InjectedProps {
 }
 
 class FilteredProductList extends Component<InjectedProps & RouteComponentProps> {
-
-  componentWillMount(): void {
-
-  }
-
   getTitleByCategoryNum(category: number): string {
-
     if(category === 0) {
-      return "차량"
+      return "중고 차량 목록";
     } else if(category === 1) {
-      return "차량2"
+      return "중고 인기매물 목록";
+    } else if(category === 2) {
+      return "중고 가구/인테리어 목록";
+    } else if(category ===3){
+      return "중고 유아동/유아도서 목록";
+    }else if (category === 4){
+      return "중고 생활/가공식품 목록";
     }
-
   }
 
   render() {
     const { products } = this.props[STORES.PRODUCTS_STORE];
-  
-
-    console.log("products", products);
-    const title = this.getTitleByCategoryNum(this.props[STORES.PRODUCTS_STORE].currentCategory)
-
+    const title = this.getTitleByCategoryNum(this.props[STORES.PRODUCTS_STORE].category);
     return (
       <>
         <FixedTopBar />

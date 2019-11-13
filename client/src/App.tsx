@@ -11,7 +11,6 @@ import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
 import { PAGE_PATHS, STORES } from '~constants';
 import ProductList from '~pages/ProductList';
-import ProductList from '~pages/FilteredProductList';
 import Singup from '~pages/Signup';
 import ProductRegistration from '~pages/ProductRegistration';
 import ProductDetail from '~pages/ProductDetail';

@@ -6,11 +6,7 @@ import autobind from 'autobind-decorator';
 class ProductsStore {
   @observable products: ProductDto[] = [];
   @observable detailProduct: ProductDto = {} as ProductDto;
-
-  @observable currentCategory: number = -1;
-
-  // @observable clickedCategory: number = -1;
-  // @observable clickedCategoryTitle: String = ""
+  @observable category: number = -1;
 
   constructor(private productService: ProductService) {
   }
@@ -26,9 +22,6 @@ class ProductsStore {
     const response = await this.productService.getById(id);
     this.setDetailProduct(response.data.data);
   }
-
-  @action
-  
 
   @action
   async registrationProduct(product: ProductRegistrationDto) {
@@ -47,12 +40,11 @@ class ProductsStore {
 
   @action
   setCategory(category: number) {
-    this.currentCategory = category
+    this.category = category
   }
 
   @action
   setDetailProduct(product: ProductDto) {
-    console.log("product", product);
     this.detailProduct = product;
   }
 }
