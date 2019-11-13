@@ -21,10 +21,12 @@ const API_HOST = process.env.API_HOST || 'http://localhost:5000/api';
 
 class AuthService {
   async login(body: LoginSignupRequestDto): Promise<ApiResponse<LoginResponseDto>> {
+    console.log('post /auth/login');
     return axios.post(`${API_HOST}/auth/login`, body);
   }
 
   async signUp(body: LoginSignupRequestDto): Promise<ApiResponse<AuthResponseDto>> {
+    console.log('post /auth/signup');
     return axios.post(`${API_HOST}/auth/signup`, body);
   }
 }
