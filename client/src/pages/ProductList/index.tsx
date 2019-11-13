@@ -47,34 +47,34 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
           <h5 className="container-headline">{this.state.clickedCatetoryName}</h5>
           <div className="categories-group" style={this.state.clickedCategory===-1 ? {} : {display:'none'}}>
             <Link
-              to={PAGE_PATHS.PRODUCT_CAR_CATEGORY_LISTS}
+              to={PAGE_PATHS.PRODUCT_LISTS}
               className="btn btn-category"
               onClick={() => this.onClickCategory(0, "중고차량목록")}
             >
               차량
             </Link>
             <Link 
-              to={PAGE_PATHS.PRODUCT_POPULAR_LISTS} 
+              to={PAGE_PATHS.PRODUCT_LISTS} 
               className="btn btn-category"
             >
               인기매물
             </Link>
             <Link 
-              to={PAGE_PATHS.PRODUCT_FURNITURE_CATEGORY_LISTS} 
+              to={PAGE_PATHS.PRODUCT_LISTS} 
               className="btn btn-category"
               onClick 
             >
               가구/인테리어
             </Link>
             <Link 
-              to={PAGE_PATHS.PRODUCT_CHILD_CATEGORY_LISTS} 
+              to={PAGE_PATHS.PRODUCT_LISTS} 
               className="btn btn-category"
 
             >
               유아동/유아도서
             </Link>
             <Link 
-              to={PAGE_PATHS.PRODUCT_LIFE_CATEGORY_LISTS} 
+              to={PAGE_PATHS.PRODUCT_LISTS} 
               className="btn btn-category"
             >
               생활/가공식품
@@ -82,8 +82,6 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
           </div>
 
           <ul className="list-products row">
-            
-            
             {
 
             filterdProducts.map(v => (
