@@ -25,8 +25,8 @@ class AuthService {
   }
 
   async signUp(body: LoginSignupRequestDto): Promise<ApiResponse<AuthResponseDto>> {
-    console.log('process.env.NODE_ENV: ' + process.env.NODE_ENV);
-    console.log('process.env.API_HOST: ' + process.env.API_HOST);
+    // console.log('process.env.NODE_ENV: ' + process.env.NODE_ENV);
+    // console.log('process.env.API_HOST: ' + process.env.API_HOST);
     return axios.post(`${API_HOST}/auth/signup`, body);
   }
 }

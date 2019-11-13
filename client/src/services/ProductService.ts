@@ -42,8 +42,8 @@ class ProductService {
     formData.append('description', body.description);
     formData.append('price', String(body.price));
 
-    console.log('process.env.NODE_ENV: ' + process.env.NODE_ENV);
-    console.log('process.env.API_HOST: ' + process.env.API_HOST);
+    // console.log('process.env.NODE_ENV: ' + process.env.NODE_ENV);
+    // console.log('process.env.API_HOST: ' + process.env.API_HOST);
 
     return axios.post<ProductRegistrationDto, ApiResponse<ProductDto>>(`${API_HOST}/products`, formData, {
       headers: {'Content-Type': 'multipart/form-data' }
