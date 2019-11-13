@@ -49,6 +49,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
+  console.log('/auth/signup');
   const { email, password } = req.body;
 
   const error = checkEmailPw(email, password);
@@ -57,6 +58,7 @@ router.post('/signup', async (req, res) => {
     return res.status(400).send(error);
   }
 
+  console.log('before User.findOne');
   const user = await User.findOne({
     where: { email }
   });
