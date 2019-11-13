@@ -61,6 +61,8 @@ router.post('/signup', async (req, res) => {
     where: { email }
   });
 
+  console.log('user: ' + user);
+
   if (user) {
     return res.status(400).json({ msg: '이미 등록된 이메일 입니다.' });
   }
