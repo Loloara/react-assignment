@@ -32,7 +32,7 @@ router.post('', upload.single('image'), async (req, res) => {
       ...product,
       image: `/${image.path}`,
     });
-    return res.json({ data: insertedProduct, msg: '상품등록에 성고하였습니다.' });
+    return res.json({ data: insertedProduct, msg: '상품등록에 성공하였습니다.' });
   } catch (e) {
     return res.status(500).json({ msg: e.message });
   }
