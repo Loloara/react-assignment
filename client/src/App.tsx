@@ -11,9 +11,11 @@ import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
 import { PAGE_PATHS, STORES } from '~constants';
 import ProductList from '~pages/ProductList';
+import ProductList from '~pages/FilteredProductList';
 import Singup from '~pages/Signup';
 import ProductRegistration from '~pages/ProductRegistration';
 import ProductDetail from '~pages/ProductDetail';
+import FilteredProductList from '~pages/FilteredProductList';
 
 @inject(STORES.AUTH_STORE)
 @observer
@@ -34,6 +36,11 @@ export default class App extends Component {
             path={PAGE_PATHS.PRODUCT_LISTS}
             redirectTo={PAGE_PATHS.SIGNIN}
             component={ProductList}
+          />
+          <PrivateRoute
+            path={PAGE_PATHS.Filtered_PRODUCT_LISTS}
+            redirectTo={PAGE_PATHS.SIGNIN}
+            component={FilteredProductList}
           />
           <PrivateRoute
             path={PAGE_PATHS.PRODUCT_REGISTRATION}

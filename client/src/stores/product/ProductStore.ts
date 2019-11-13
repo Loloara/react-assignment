@@ -13,7 +13,6 @@ class ProductsStore {
   @action
   async getAllProducts() {
     const response = await this.productService.getAll();
-    console.log(response.data.data);
     this.setProducts(response.data.data);
   }
 

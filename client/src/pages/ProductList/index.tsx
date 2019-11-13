@@ -12,79 +12,66 @@ interface InjectedProps {
 }
 
 class ProductList extends Component<InjectedProps & RouteComponentProps> {
-
   state = {
     clickedCategory: -1,
     clickedCatetoryName: "전체"
   }
-
+  
   componentWillMount(): void {
     this.props[STORES.PRODUCTS_STORE].getAllProducts();
   }
 
   onClickCategory = (category: number, categoryName:String) => {
-    console.log(category)
     this.setState({ clickedCategory: category, clickedCatetoryName: categoryName })
   }
 
   render() {
     const { products } = this.props[STORES.PRODUCTS_STORE];
-
-    console.log("products", products)
-    
-    const filterdProducts = this.state.clickedCategory === -1 ?
-     products 
-     : products.filter(item => item.category === this.state.clickedCategory)
-
-     console.log("filterdProducts", filterdProducts)
-
-     console.log("this.state.clickedCategory", this.state.clickedCategory)
-
     return (
       <>
         <FixedTopBar />
         <div className="container container-main-index">
-          <h5 className="container-headline">{this.state.clickedCatetoryName}</h5>
-          <div className="categories-group" style={this.state.clickedCategory===-1 ? {} : {display:'none'}}>
+          <h5 className="container-headline">중고 거래 제품</h5>
+          <div className="categories-group">
             <Link
-              to={PAGE_PATHS.PRODUCT_LISTS}
+              to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick={() => this.onClickCategory(0, "중고차량목록")}
+              onClick={() => this.onClickCategory(0, "중고 차량 목록")}
             >
               차량
             </Link>
-            <Link 
-              to={PAGE_PATHS.PRODUCT_LISTS} 
+            <Link
+              to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
               className="btn btn-category"
+              onClick={() => this.onClickCategory(1, "중고 인기매물 목록")}
             >
               인기매물
             </Link>
-            <Link 
-              to={PAGE_PATHS.PRODUCT_LISTS} 
+            <Link
+              to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick 
+              onClick={() => this.onClickCategory(2, "중고 가구/인테리어 목록")}
             >
               가구/인테리어
             </Link>
-            <Link 
-              to={PAGE_PATHS.PRODUCT_LISTS} 
+            <Link
+              to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
               className="btn btn-category"
-
+              onClick={() => this.onClickCategory(3, "중고 유아동/유아도서 목록")}
             >
               유아동/유아도서
             </Link>
-            <Link 
-              to={PAGE_PATHS.PRODUCT_LISTS} 
+            <Link
+              to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
               className="btn btn-category"
+              onClick={() => this.onClickCategory(4, "중고 생활/가공식품 목록")}
             >
               생활/가공식품
             </Link>
           </div>
-
           <ul className="list-products row">
             {
-
-            filterdProducts.map(v => (
+              products.map(v => (
               <li
                 key={v.id}
                 className="list-products-item col-12 col-md-4 col-lg-3"
