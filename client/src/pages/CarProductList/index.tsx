@@ -22,7 +22,7 @@ class CarProductList extends Component<InjectedProps & RouteComponentProps> {
       <>
         <FixedTopBar />
         <div className="container container-main-index">
-          <h5 className="container-headline">중고 거래 제품</h5>
+          <h5 className="container-headline">중고 차량 목록</h5>
           <ul className="list-products row">
             {products.map(v => (
               <li

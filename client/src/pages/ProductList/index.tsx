@@ -12,8 +12,17 @@ interface InjectedProps {
 }
 
 class ProductList extends Component<InjectedProps & RouteComponentProps> {
+
+  state = {
+    clickedCategory: "car"
+  }
+
   componentWillMount(): void {
     this.props[STORES.PRODUCTS_STORE].getAllProducts();
+  }
+
+  onClickCategory = () => {
+    console.log("aaaa")
   }
 
   render() {
@@ -28,6 +37,7 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
             <Link
               to={PAGE_PATHS.PRODUCT_CAR_CATEGORY_LISTS}
               className="btn btn-category"
+              onClick={this.onClickCategory}
             >
               차량
             </Link>
@@ -40,12 +50,14 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
             <Link 
               to={PAGE_PATHS.PRODUCT_FURNITURE_CATEGORY_LISTS} 
               className="btn btn-category"
+              onClick 
             >
               가구/인테리어
             </Link>
             <Link 
               to={PAGE_PATHS.PRODUCT_CHILD_CATEGORY_LISTS} 
               className="btn btn-category"
+
             >
               유아동/유아도서
             </Link>
