@@ -47,6 +47,9 @@ class ProductService {
     formData.append('title', body.title);
     formData.append('description', body.description);
     formData.append('price', String(body.price));
+    formData.append('carModelYear', body.carModelYear);
+    formData.append('carMileage', String(body.carMileage));
+    formData.append('smoking', String(body.smoking));
 
     return axios.post<ProductRegistrationDto, ApiResponse<ProductDto>>(`${API_HOST}/products`, formData, {
       headers: {'Content-Type': 'multipart/form-data' }
