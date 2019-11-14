@@ -6,31 +6,16 @@ import ProductsStore from '~stores/product/ProductStore';
 import Footer from '~components/Footer';
 import FixedTopBar from '~components/FixedTopBar';
 import Product from '~pages/ProductList/Product';
+import Utils from '~pages/utils';
 
 interface InjectedProps {
   [STORES.PRODUCTS_STORE]: ProductsStore;
 }
 
 class CategorizedProductList extends Component<InjectedProps & RouteComponentProps> {
-  getTitleByCategoryNum(category: number): string {
-    if(category === 0) {
-      return "중고 차량 목록";
-    } else if(category === 1) {
-      return "중고 인기매물 목록";
-    } else if(category === 2) {
-      return "중고 가구/인테리어 목록";
-    } else if(category ===3){
-      return "중고 유아동/유아도서 목록";
-    }else if (category === 4){
-      return "중고 생활/가공식품 목록";
-    } else {
-      return "새로운 카테고리 번호"
-    }
-  }
-
   render() {
     const { products } = this.props[STORES.PRODUCTS_STORE];
-    const title = this.getTitleByCategoryNum(this.props[STORES.PRODUCTS_STORE].category);
+    const title = "중고 " + Utils.getCategoryName(this.props[STORES.PRODUCTS_STORE].categoryOfPage) + " 목록";
     return (
       <>
         <FixedTopBar />
