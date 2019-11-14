@@ -11,10 +11,11 @@ interface InjectedProps {
 
 
 const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: InjectedProps) => {
+  const categoryOfPage = props[STORES.PRODUCTS_STORE].categoryOfPage < 4 ? props[STORES.PRODUCTS_STORE].categoryOfPage : null;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
-  const [category, setCategory] = useState();
+  const [category, setCategory] = useState(categoryOfPage);
   const [fileName, setFileName] = useState('파일선택');
   const [image, setImage] = useState();
   const [showCarInfo, setShowCarInfo] = useState(false);
