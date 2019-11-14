@@ -27,23 +27,12 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
   };
 
   const onCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
-
     const clickedCategory = event.target.value ? Number(event.target.value) : undefined
-
     if(clickedCategory === undefined) {
       return;
     }
-
     setCategory(clickedCategory);
-    
-    
-    console.log('onCategoryChange', category);
-
-    if(clickedCategory === 0){
-      setShowCarInfo(true);
-    } else{
-      setShowCarInfo(false);
-    }
+    setShowCarInfo(clickedCategory === 0);    
   };
 
   const onRegister = async (event: FormEvent) => {
