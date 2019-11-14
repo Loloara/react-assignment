@@ -27,8 +27,19 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
   };
 
   const onCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setCategory(event.target.value ? Number(event.target.value) : undefined);
-    if(category===0){
+
+    const clickedCategory = event.target.value ? Number(event.target.value) : undefined
+
+    if(clickedCategory === undefined) {
+      return;
+    }
+
+    setCategory(clickedCategory);
+    
+    
+    console.log('onCategoryChange', category);
+
+    if(clickedCategory === 0){
       setShowCarInfo(true);
     } else{
       setShowCarInfo(false);
@@ -105,7 +116,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
           </div>}
           {showCarInfo && <div className="form-group form-car-mileage">
             <input type="number" className="form-control" id="carMileage" placeholder="주행거리를 입력해주세요.(km)"/>
-          </div>}
+            </div>}
           {showCarInfo && <div className="form-group form-car-smoking">
             <label>차량 판매자 흡연 여부</label>
             <div className="form-check form-check-inline form-check-smoking">
