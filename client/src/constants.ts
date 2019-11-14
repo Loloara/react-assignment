@@ -7,7 +7,7 @@ export enum PAGE_PATHS {
   SIGNUP = '/signup',
   SIGNIN = '/signin',
   PRODUCT_LISTS = '/products',
-  Filtered_PRODUCT_LISTS = '/filtered-products',
+  Categorized_PRODUCT_LISTS = '/categorized-products',
   PRODUCT = '/products',
   PRODUCT_REGISTRATION = "/products-registration"
 }

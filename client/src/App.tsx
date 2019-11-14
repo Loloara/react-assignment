@@ -14,7 +14,7 @@ import ProductList from '~pages/ProductList';
 import Singup from '~pages/Signup';
 import ProductRegistration from '~pages/ProductRegistration';
 import ProductDetail from '~pages/ProductDetail';
-import FilteredProductList from '~pages/FilteredProductList';
+import CategorizedProductList from '~pages/CategoriezedProductList';
 
 @inject(STORES.AUTH_STORE)
 @observer
@@ -37,9 +37,9 @@ export default class App extends Component {
             component={ProductList}
           />
           <PrivateRoute
-            path={PAGE_PATHS.Filtered_PRODUCT_LISTS}
+            path={PAGE_PATHS.Categorized_PRODUCT_LISTS}
             redirectTo={PAGE_PATHS.SIGNIN}
-            component={FilteredProductList}
+            component={CategorizedProductList}
           />
           <PrivateRoute
             path={PAGE_PATHS.PRODUCT_REGISTRATION}

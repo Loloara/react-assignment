@@ -11,7 +11,7 @@ interface InjectedProps {
   [STORES.PRODUCTS_STORE]: ProductsStore;
 }
 
-class FilteredProductList extends Component<InjectedProps & RouteComponentProps> {
+class CategorizedProductList extends Component<InjectedProps & RouteComponentProps> {
   getTitleByCategoryNum(category: number): string {
     if(category === 0) {
       return "중고 차량 목록";
@@ -23,6 +23,8 @@ class FilteredProductList extends Component<InjectedProps & RouteComponentProps>
       return "중고 유아동/유아도서 목록";
     }else if (category === 4){
       return "중고 생활/가공식품 목록";
+    } else {
+      return "새로운 카테고리 번호"
     }
   }
 
@@ -54,4 +56,4 @@ class FilteredProductList extends Component<InjectedProps & RouteComponentProps>
   }
 }
 
-export default inject(STORES.PRODUCTS_STORE)(observer(FilteredProductList));
+export default inject(STORES.PRODUCTS_STORE)(observer(CategorizedProductList));

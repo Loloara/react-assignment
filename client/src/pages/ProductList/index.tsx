@@ -32,35 +32,35 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
           <h5 className="container-headline">중고 거래 제품</h5>
           <div className="categories-group">
             <Link
-              to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
+              to={PAGE_PATHS.Categorized_PRODUCT_LISTS}
               className="btn btn-category"
               onClick={() => this.onClickCategory(0)}
             >
               차량
             </Link>
             <Link
-              to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
+              to={PAGE_PATHS.Categorized_PRODUCT_LISTS}
               className="btn btn-category"
               onClick={() => this.onClickCategory(1)}
             >
               인기매물
             </Link>
             <Link
-              to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
+              to={PAGE_PATHS.Categorized_PRODUCT_LISTS}
               className="btn btn-category"
               onClick={() => this.onClickCategory(2)}
             >
               가구/인테리어
             </Link>
             <Link
-              to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
+              to={PAGE_PATHS.Categorized_PRODUCT_LISTS}
               className="btn btn-category"
               onClick={() => this.onClickCategory(3)}
             >
               유아동/유아도서
             </Link>
             <Link
-              to={PAGE_PATHS.Filtered_PRODUCT_LISTS}
+              to={PAGE_PATHS.Categorized_PRODUCT_LISTS}
               className="btn btn-category"
               onClick={() => this.onClickCategory(4)}
             >
