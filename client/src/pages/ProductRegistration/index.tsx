@@ -88,7 +88,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
                       placeholder="제품 설명을 작성해주세요."/>
           </div>
           {showCarInfo && <div className="form-group form-car-model-year">
-            <select id="carModelYear" className="form-control">
+            <select id="carModelYear" className="form-control" required>
               <option value="">차량 연식을 선택해주세요</option>
               <option value="2020">2020년</option>
               <option value="2019">2019년</option>
@@ -104,12 +104,12 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
             </select>
           </div>}
           {showCarInfo && <div className="form-group form-car-mileage">
-            <input type="number" className="form-control" id="carMileage" placeholder="주행거리를 입력해주세요.(km)"/>
+            <input type="number" className="form-control" id="carMileage" placeholder="주행거리를 입력해주세요.(km)" required />
             </div>}
           {showCarInfo && <div className="form-group form-car-smoking">
             <label>차량 판매자 흡연 여부</label>
             <div className="form-check form-check-inline form-check-smoking">
-              <input className="form-check-input" type="radio" name="smokingOptions" id="inlineSmoker" value="true" />
+              <input className="form-check-input" type="radio" name="smokingOptions" id="inlineSmoker" value="true" required />
                 <label className="form-check-label smoker" htmlFor="inlineSmoker">예, 흡연자 입니다.</label>
             </div>
             <div className="form-check form-check-inline form-check-nonsmoking">
