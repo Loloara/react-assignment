@@ -19,7 +19,7 @@ function ProductDetail(props: ProductDetailProps) {
   }, []);
 
   const { detailProduct } = props[STORES.PRODUCTS_STORE];
-  const { image, category, title, price, createdAt, description } = detailProduct;
+  const { image, category, title, price, createdAt, description, carModelYear, carMileage, smoking } = detailProduct;
   const time = moment(createdAt);
   const showCarInfo = category===0 ? true : false
   
@@ -47,13 +47,13 @@ function ProductDetail(props: ProductDetailProps) {
             </span>
           </li>
           {showCarInfo && <li className="list-item car-model-year">
-            차량 연식 <span>3년</span>
+            차량 연식 <span>{Number(carModelYear)-time.year()}</span>
           </li>}
           {showCarInfo && <li className="list-item car-mileage">
-            주행 거리 <span>1,299km</span>
+            주행 거리 <span>{carMileage}km</span>
           </li>}
           {showCarInfo && <li className="list-item car-smoking">
-            판매자 흡연 여부 <span>흡연자</span>
+            판매자 흡연 여부 <span>{!smoking && '비'}흡연자</span>
           </li>}
         </ul>
         <div className="description">{description}</div>
