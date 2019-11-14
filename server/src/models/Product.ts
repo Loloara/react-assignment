@@ -7,6 +7,9 @@ export default class Product extends Model {
   public title!: string;
   public description!: string;
   public price!: number;
+  public carModelYear!: number;
+  public carMileage!: number;
+  public smoking!: boolean;
   public image!: string;
 
   public readonly createdAt!: Date;
