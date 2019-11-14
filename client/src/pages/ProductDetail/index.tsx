@@ -49,7 +49,7 @@ function ProductDetail(props: ProductDetailProps) {
             </span>
           </li>
           {showCarInfo && <li className="list-item car-model-year">
-            차량 연식 <span>{String(moment().year()-Number({carModelYear}))}년</span>
+            차량 연식 <span>{String(moment().diff(carModelYear, "years"))}년</span>
           </li>}
           {showCarInfo && <li className="list-item car-mileage">
             주행 거리 <span>{String(carMileage)}km</span>
