@@ -9,6 +9,9 @@ export type ProductRegistrationDto = {
   title: string;
   description: string;
   price: number;
+  carModelYear: string;
+  carMileage: number;
+  smoking: boolean;
 }
 
 export type ProductDto = {
@@ -19,6 +22,9 @@ export type ProductDto = {
   category: number;
   description: string;
   price: number;
+  carModelYear: string;
+  carMileage: number;
+  smoking: boolean;
   createdAt: string;
   updatedAt: string;
 }
