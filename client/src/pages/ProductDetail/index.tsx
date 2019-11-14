@@ -49,10 +49,10 @@ function ProductDetail(props: ProductDetailProps) {
             </span>
           </li>
           {showCarInfo && <li className="list-item car-model-year">
-            차량 연식 <span>{String(Number(carModelYear)-time.year())}</span>
+            차량 연식 <span>{String(moment().year()-Number({carModelYear}))}년</span>
           </li>}
           {showCarInfo && <li className="list-item car-mileage">
-            주행 거리 <span>{String(carMileage)}+km</span>
+            주행 거리 <span>{String(carMileage)}km</span>
           </li>}
           {showCarInfo && <li className="list-item car-smoking">
             판매자 흡연 여부 <span>{smoking ? "흡연자" : "비 흡연자"}</span>
