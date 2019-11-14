@@ -124,12 +124,17 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
             <label>차량 판매자 흡연 여부</label>
             <div className="form-check form-check-inline form-check-smoking">
               <input className="form-check-input" type="radio" name="smokingOptions" id="inlineSmoker"
-                value="true" onChange={v =>  setSmoking(Boolean(v.target.value))} required />
+                value="true" onChange={v =>  {setSmoking(Boolean(v.target.value))
+                console.log('radiotrue', v.target.value);
+                }} required />
                 <label className="form-check-label smoker" htmlFor="inlineSmoker">예, 흡연자 입니다.</label>
             </div>
             <div className="form-check form-check-inline form-check-nonsmoking">
               <input className="form-check-input" type="radio" name="smokingOptions" id="inlineNonSmoker"
-                value="false" onChange={v =>  setSmoking(Boolean(v.target.value))} />
+                value="false" onChange={v =>  {setSmoking(Boolean(v.target.value))
+                console.log('radiofalse'.v.target.value);
+              }
+                } />
                 <label className="form-check-label non-smoker" htmlFor="inlineNonSmoker">아니오, 비 흡연자 입니다.</label>
             </div>
           </div>}
