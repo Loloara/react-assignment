@@ -73,6 +73,18 @@ export function init(): Sequelize {
     description: {
       type: new DataTypes.STRING(100),
       allowNull: true,
+    },
+    carModelYear: {
+      type: new DataTypes.STRING(4),
+      allowNull: true,
+    },
+    carMileage: { 
+      type: DataTypes.FLOAT.UNSIGNED,
+      allowNull: true,
+    },
+    smoking: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
     }
   }, {
     sequelize,
