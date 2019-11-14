@@ -26,7 +26,8 @@ function ProductDetail(props: ProductDetailProps) {
   }
 
   console.log('detailProduct', detailProduct);
-
+  console.log('state',state);
+  
   return (
     <>
       <BackTopBar />
@@ -50,13 +51,13 @@ function ProductDetail(props: ProductDetailProps) {
               <time dateTime="2019-08-20T08:30:00Z">{time.fromNow()}</time>
             </span>
           </li>
-          <li className="list-item car-model-year" style={{display: state.showCarInfo ? 'block' : 'nono'}}>
+          <li className="list-item car-model-year" style={{display: state.showCarInfo ? 'inline-block' : 'none'}}>
             차량 연식 <span>3년</span>
           </li>
-          <li className="list-item car-mileage" style={{display: state.showCarInfo ? 'block' : 'nono'}}>
+          <li className="list-item car-mileage" style={{display: state.showCarInfo ? 'inline-block' : 'none'}}>
             주행 거리 <span>1,299km</span>
           </li>
-          <li className="list-item car-smoking" style={{display: state.showCarInfo ? 'block' : 'nono'}}>
+          <li className="list-item car-smoking" style={{display: state.showCarInfo ? 'inline-block' : 'none'}}>
             판매자 흡연 여부 <span>흡연자</span>
           </li>
         </ul>
