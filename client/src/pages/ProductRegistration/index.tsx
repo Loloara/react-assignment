@@ -17,9 +17,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
   const [category, setCategory] = useState();
   const [fileName, setFileName] = useState('파일선택');
   const [image, setImage] = useState();
-  const state = {
-    showCarInfo : false
-  }
+  const [showCarInfo] = useState(false);
 
   const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files != null && event.target.files.length > 0) {
@@ -31,8 +29,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
   const onCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setCategory(event.target.value ? Number(event.target.value) : undefined);
     if(category===0){
-      console.log('cat0?', category)
-      state.showCarInfo=true;
+      showCarInfo=true;
     }
   };
 
@@ -48,13 +45,6 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
       price
     });
   };
-
-  useEffect(() => {
-    console.log('useEffect', category);
-    return () => {
-      console.log('claen', state.showCarInfo);
-    }
-  }, [category]);
 
   return (
     <>
@@ -95,7 +85,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
                       onChange={v => setDescription(v.target.value)}
                       placeholder="제품 설명을 작성해주세요."/>
           </div>
-          <div className="form-group form-car-model-year" style={{display : state.showCarInfo ? 'block' : 'none'}}>
+          <div className="form-group form-car-model-year" style={{display : showCarInfo ? 'block' : 'none'}}>
             <select id="carModelYear" className="form-control">
               <option value="">차량 연식을 선택해주세요</option>
               <option value="2020">2020년</option>
@@ -111,10 +101,10 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
               <option value="2010">2010년</option>
             </select>
           </div>
-          <div className="form-group form-car-mileage" style={{display : state.showCarInfo ? 'block' : 'none'}}>
+          <div className="form-group form-car-mileage" style={{display : showCarInfo ? 'block' : 'none'}}>
             <input type="number" className="form-control" id="carMileage" placeholder="주행거리를 입력해주세요.(km)"/>
           </div>
-          <div className="form-group form-car-smoking" style={{display : state.showCarInfo ? 'block' : 'none'}}>
+          <div className="form-group form-car-smoking" style={{display : showCarInfo ? 'block' : 'none'}}>
             <label>차량 판매자 흡연 여부</label>
             <div className="form-check form-check-inline form-check-smoking">
               <input className="form-check-input" type="radio" name="smokingOptions" id="inlineSmoker" value="true" />
