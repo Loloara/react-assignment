@@ -6,7 +6,7 @@ import autobind from 'autobind-decorator';
 class ProductsStore {
   @observable products: ProductDto[] = [];
   @observable detailProduct: ProductDto = {} as ProductDto;
-  @observable category: number = -1;
+  @observable categoryOfPage: number = -1;
 
   constructor(private productService: ProductService) {
   }
