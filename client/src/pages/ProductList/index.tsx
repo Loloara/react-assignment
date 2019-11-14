@@ -41,28 +41,28 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
             <Link
               to={PAGE_PATHS.Categorized_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick={() => this.onClickCategory(1)}
+              onClick={() => this.onClickCategory(4)}
             >
               인기매물
             </Link>
             <Link
               to={PAGE_PATHS.Categorized_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick={() => this.onClickCategory(2)}
+              onClick={() => this.onClickCategory(1)}
             >
               가구/인테리어
             </Link>
             <Link
               to={PAGE_PATHS.Categorized_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick={() => this.onClickCategory(3)}
+              onClick={() => this.onClickCategory(2)}
             >
               유아동/유아도서
             </Link>
             <Link
               to={PAGE_PATHS.Categorized_PRODUCT_LISTS}
               className="btn btn-category"
-              onClick={() => this.onClickCategory(4)}
+              onClick={() => this.onClickCategory(3)}
             >
               생활/가공식품
             </Link>
