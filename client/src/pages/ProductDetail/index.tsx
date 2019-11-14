@@ -25,6 +25,8 @@ function ProductDetail(props: ProductDetailProps) {
     showCarInfo : category===0 ? true : false
   }
 
+  console.log('detailProduct', detailProduct);
+
   return (
     <>
       <BackTopBar />
