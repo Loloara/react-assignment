@@ -16,11 +16,11 @@ class ProductList extends Component<InjectedProps & RouteComponentProps> {
     this.props[STORES.PRODUCTS_STORE].getAllProducts();
   }
 
-  onClickCategory = (category: number) => {
+  onClickCategory = (categoryOfPage: number) => {
     const { products } = this.props[STORES.PRODUCTS_STORE];
-    const categorizedProducts = products.filter(item => item.category === category);
+    const categorizedProducts = products.filter(item => item.category === categoryOfPage);
     this.props[STORES.PRODUCTS_STORE].setProducts(categorizedProducts);
-    this.props[STORES.PRODUCTS_STORE].setCategory(category);
+    this.props[STORES.PRODUCTS_STORE].setCategoryOfPage(categoryOfPage);
   }
 
   render() {

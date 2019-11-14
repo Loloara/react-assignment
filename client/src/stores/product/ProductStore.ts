@@ -39,8 +39,8 @@ class ProductsStore {
   }
 
   @action
-  setCategory(category: number) {
-    this.category = category
+  setCategoryOfPage(categoryOfPage: number) {
+    this.categoryOfPage = categoryOfPage
   }
 
   @action
