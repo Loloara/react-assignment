@@ -34,7 +34,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
       state.showCarInfo=true;
       useEffect(() => {
         console.log('rendered');
-      }
+      });
     }
   };
 
