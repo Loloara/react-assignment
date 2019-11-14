@@ -14,7 +14,9 @@ function FixedTopBar() {
         </Link>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
+            <button className="btn-filter" data-toggle="modal" data-target="#section-filter">
               <i className="material-icons ic-filter">filter_list</i>
+            </button>
           </li>
           <li className="nav-item">
             <Link to={PAGE_PATHS.PRODUCT_REGISTRATION} >
