@@ -21,6 +21,9 @@ function ProductDetail(props: ProductDetailProps) {
   const { detailProduct } = props[STORES.PRODUCTS_STORE];
   const { image, category, title, price, createdAt, description } = detailProduct;
   const time = moment(createdAt);
+  const state = {
+    showCarInfo : category===0 ? true : false
+  }
 
   return (
     <>
@@ -45,14 +48,13 @@ function ProductDetail(props: ProductDetailProps) {
               <time dateTime="2019-08-20T08:30:00Z">{time.fromNow()}</time>
             </span>
           </li>
-          // 추가된 부분!
-          <li className="list-item car-model-year">
+          <li className="list-item car-model-year" style={{display: state.showCarInfo ? 'block' : 'nono'}}>
             차량 연식 <span>3년</span>
           </li>
-          <li className="list-item car-mileage">
+          <li className="list-item car-mileage" style={{display: state.showCarInfo ? 'block' : 'nono'}}>
             주행 거리 <span>1,299km</span>
           </li>
-          <li className="list-item car-smoking">
+          <li className="list-item car-smoking" style={{display: state.showCarInfo ? 'block' : 'nono'}}>
             판매자 흡연 여부 <span>흡연자</span>
           </li>
         </ul>
