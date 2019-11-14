@@ -6,7 +6,7 @@ import ProductsStore from '~stores/product/ProductStore';
 import Footer from '~components/Footer';
 import FixedTopBar from '~components/FixedTopBar';
 import Product from '~pages/ProductList/Product';
-import Utils from '~pages/utils';
+import {getCategoryName} from '~pages/utils';
 
 interface InjectedProps {
   [STORES.PRODUCTS_STORE]: ProductsStore;
@@ -15,7 +15,7 @@ interface InjectedProps {
 class CategorizedProductList extends Component<InjectedProps & RouteComponentProps> {
   render() {
     const { products } = this.props[STORES.PRODUCTS_STORE];
-    const title = "중고 " + Utils.getCategoryName(this.props[STORES.PRODUCTS_STORE].categoryOfPage) + " 목록";
+    const title = "중고 " + getCategoryName(this.props[STORES.PRODUCTS_STORE].categoryOfPage) + " 목록";
     return (
       <>
         <FixedTopBar />
