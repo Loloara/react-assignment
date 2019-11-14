@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import { STORES } from '~constants';
 import { inject, observer } from 'mobx-react';
 import ProductsStore from '~stores/product/ProductStore';
@@ -30,8 +30,12 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
 
   const onCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setCategory(event.target.value ? Number(event.target.value) : undefined);
-    if(category===0)
+    if(category===0){
       state.showCarInfo=true;
+      useEffect(() => {
+        console.log('rendered');
+      }
+    }
   };
 
   const onRegister = async (event: FormEvent) => {
