@@ -21,10 +21,6 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
     showCarInfo : false
   }
 
-  useEffect(() => {
-    console.log('category', category);
-  }, [state.showCarInfo]);
-
   const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files != null && event.target.files.length > 0) {
       setFileName(event.target.files[0].name);
@@ -34,8 +30,8 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
 
   const onCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setCategory(event.target.value ? Number(event.target.value) : undefined);
-    console.log('category', category);
     if(category===0){
+      console.log('cat0?', category)
       state.showCarInfo=true;
     }
   };
@@ -52,6 +48,13 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
       price
     });
   };
+
+  useEffect(() => {
+    console.log('useEffect', category);
+    return () => {
+      console.log('claen', state.showCarInfo);
+    }
+  }, [state.showCarInfo]);
 
   return (
     <>
