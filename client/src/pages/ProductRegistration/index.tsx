@@ -11,17 +11,21 @@ interface InjectedProps {
 
 
 const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: InjectedProps) => {
-  const categoryOfPage = props[STORES.PRODUCTS_STORE].categoryOfPage < 4 ? props[STORES.PRODUCTS_STORE].categoryOfPage : null;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
-  const [category, setCategory] = useState(categoryOfPage);
+  const [category, setCategory] = useState();
   const [fileName, setFileName] = useState('파일선택');
   const [image, setImage] = useState();
   const [showCarInfo, setShowCarInfo] = useState(false);
   const [carModelYear, setCarModelYear] = useState();
   const [carMileage, setCarMileage] = useState(0);
   const [smoking, setSmoking] = useState();
+
+  if(props[STORES.PRODUCTS_STORE].categoryOfPage < 4){
+    setCategory(props[STORES.PRODUCTS_STORE].categoryOfPage);
+    setShowCarInfo(!props[STORES.PRODUCTS_STORE].categoryOfPage);
+  }
 
   const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files != null && event.target.files.length > 0) {
@@ -36,7 +40,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
       return;
     }
     setCategory(clickedCategory);
-    setShowCarInfo(clickedCategory === 0);    
+    setShowCarInfo(!clickedCategory);    
   };
 
   const onCarModelYearChange = (event: ChangeEvent<HTMLSelectElement>) => {
