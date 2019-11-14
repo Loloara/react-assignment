@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { STORES } from '~constants';
 import { inject, observer } from 'mobx-react';
 import ProductsStore from '~stores/product/ProductStore';
@@ -17,7 +17,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
   const [category, setCategory] = useState();
   const [fileName, setFileName] = useState('파일선택');
   const [image, setImage] = useState();
-  const [showCarInfo] = useState(false);
+  const [showCarInfo, setShowCarInfo] = useState(false);
 
   const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files != null && event.target.files.length > 0) {
@@ -29,7 +29,9 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
   const onCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setCategory(event.target.value ? Number(event.target.value) : undefined);
     if(category===0){
-      showCarInfo=true;
+      setShowCarInfo(true);
+    } else{
+      setShowCarInfo(false);
     }
   };
 
@@ -85,7 +87,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
                       onChange={v => setDescription(v.target.value)}
                       placeholder="제품 설명을 작성해주세요."/>
           </div>
-          <div className="form-group form-car-model-year" style={{display : showCarInfo ? 'block' : 'none'}}>
+          {showCarInfo && <div className="form-group form-car-model-year">
             <select id="carModelYear" className="form-control">
               <option value="">차량 연식을 선택해주세요</option>
               <option value="2020">2020년</option>
@@ -100,11 +102,11 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
               <option value="2011">2011년</option>
               <option value="2010">2010년</option>
             </select>
-          </div>
-          <div className="form-group form-car-mileage" style={{display : showCarInfo ? 'block' : 'none'}}>
+          </div>}
+          {showCarInfo && <div className="form-group form-car-mileage">
             <input type="number" className="form-control" id="carMileage" placeholder="주행거리를 입력해주세요.(km)"/>
-          </div>
-          <div className="form-group form-car-smoking" style={{display : showCarInfo ? 'block' : 'none'}}>
+          </div>}
+          {showCarInfo && <div className="form-group form-car-smoking">
             <label>차량 판매자 흡연 여부</label>
             <div className="form-check form-check-inline form-check-smoking">
               <input className="form-check-input" type="radio" name="smokingOptions" id="inlineSmoker" value="true" />
@@ -114,7 +116,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
               <input className="form-check-input" type="radio" name="smokingOptions" id="inlineNonSmoker" value="false" />
                 <label className="form-check-label non-smoker" htmlFor="inlineNonSmoker">아니오, 비 흡연자 입니다.</label>
             </div>
-          </div>
+          </div>}
           <button className="btn btn-primary btn-submit">상품 등록하기</button>
         </form>
       </div>
