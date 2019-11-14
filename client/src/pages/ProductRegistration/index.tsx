@@ -54,7 +54,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
     return () => {
       console.log('claen', state.showCarInfo);
     }
-  }, [state.showCarInfo]);
+  }, [category]);
 
   return (
     <>
