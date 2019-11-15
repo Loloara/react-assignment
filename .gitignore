@@ -1,3 +1,6 @@
+nodemon.json
+config.ts
+
 .cache
 dist
 
