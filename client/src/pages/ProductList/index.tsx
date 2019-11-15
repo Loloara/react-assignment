@@ -14,6 +14,7 @@ interface InjectedProps {
 class ProductList extends Component<InjectedProps & RouteComponentProps> {
   componentWillMount(): void {
     this.props[STORES.PRODUCTS_STORE].getAllProducts();
+    this.props[STORES.PRODUCTS_STORE].setCategoryOfPage(5);
   }
 
   onClickCategory = (categoryOfPage: number) => {
