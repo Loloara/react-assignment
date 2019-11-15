@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import { STORES } from '~constants';
 import { inject, observer } from 'mobx-react';
 import ProductsStore from '~stores/product/ProductStore';
@@ -22,10 +22,12 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
   const [carMileage, setCarMileage] = useState(0);
   const [smoking, setSmoking] = useState();
 
-  if(props[STORES.PRODUCTS_STORE].categoryOfPage < 4){
-    setCategory(props[STORES.PRODUCTS_STORE].categoryOfPage);
-    setShowCarInfo(!props[STORES.PRODUCTS_STORE].categoryOfPage);
-  }
+  useEffect(() => {
+    if(props[STORES.PRODUCTS_STORE].categoryOfPage < 4){
+      setCategory(props[STORES.PRODUCTS_STORE].categoryOfPage);
+      setShowCarInfo(!props[STORES.PRODUCTS_STORE].categoryOfPage);
+    }
+  }, []);
 
   const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files != null && event.target.files.length > 0) {
@@ -40,7 +42,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
       return;
     }
     setCategory(clickedCategory);
-    setShowCarInfo(!clickedCategory);    
+    setShowCarInfo(!clickedCategory);
   };
 
   const onCarModelYearChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -65,6 +67,7 @@ const ProductRegistration = inject(STORES.PRODUCTS_STORE)(observer((props: Injec
 
   return (
     <>
+    {console.log('in the page regi')}
       <BackTopBar />
       <div className="container container-sm container-item-create">
         <h5 className="container-headline">중고거래 상품 등록</h5>
