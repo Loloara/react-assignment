@@ -7,6 +7,7 @@ class ProductsStore {
   @observable products: ProductDto[] = [];
   @observable detailProduct: ProductDto = {} as ProductDto;
   @observable categoryOfPage: number = 5;
+  @observable filteredCar: boolean = false;
 
   constructor(private productService: ProductService) {
   }
