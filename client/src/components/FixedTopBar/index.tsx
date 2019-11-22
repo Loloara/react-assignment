@@ -10,8 +10,8 @@ import {getCategoryName} from '~pages/utils';
 import LogoImage from '~assets/logo-basic.svg';
 
 
-type FixedTopBarProps = {
-  [STORES.PRODUCTS_STORE]: ProductsStore;
+interface FixedTopBarProps {
+  [STORES.PRODUCTS_STORE] : ProductsStore;
 }
  
 function FixedTopBar(props: FixedTopBarProps) {
