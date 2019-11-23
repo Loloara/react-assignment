@@ -37,7 +37,6 @@ function FixedTopBar(props: FixedTopBarProps) {
             </Modal>
           </li> }
           <li className="nav-item">
-            {console.log('before the page regi')}
             <Link to={PAGE_PATHS.PRODUCT_REGISTRATION} >
               <i className="material-icons ic-create">create</i>
             </Link>
