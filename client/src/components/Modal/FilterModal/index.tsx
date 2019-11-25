@@ -62,13 +62,13 @@ const FilterModal = ({ resetTrigger, submitTrigger, submitFnc } : FilterModal) =
         <div className="form-group filter-car-smoking">
             <label>차량 판매자 흡연 여부</label>
             <div className="form-check form-check-inline">
-                <input className="form-check-input" type="radio" name="formRadiosSmoking" id="formRadiosSmoking_1" checked={smoking==='option1'} value="option1" onChange={(e)=>setSmoking(e.target.value)} />
+                <input className="form-check-input" type="radio" name="formRadiosSmoking" id="formRadiosSmoking_1" checked={smoking === true} value='option1' onChange={()=>setSmoking(true)} />
                 <label className="form-check-label" htmlFor="formRadiosSmoking_1">
                     흡연
                 </label>
             </div>
             <div className="form-check form-check-inline">
-                <input className="form-check-input" type="radio" name="formRadiosSmoking" id="formRadiosSmoking_2" checked={smoking==='option2'} value="option2" onChange={(e)=>setSmoking(e.target.value)} />
+                <input className="form-check-input" type="radio" name="formRadiosSmoking" id="formRadiosSmoking_2" checked={smoking === false} value='option2' onChange={()=>setSmoking(false)} />
                 <label className="form-check-label" htmlFor="formRadiosSmoking_2">
                     비흡연
                 </label>
