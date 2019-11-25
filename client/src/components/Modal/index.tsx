@@ -6,9 +6,11 @@ interface ModalProps {
    title?: string;
    open?: boolean;
    onClose: (check: boolean) => void;
+   resetState: () => void;
+   submitState: () => void;
  }
 
-const Modal = ({ children, title, open, onClose } : ModalProps) => {
+const Modal = ({ children, title, open, onClose, resetState, submitState } : ModalProps) => {
    return (
       open
       ? ReactDOM.createPortal(
@@ -24,9 +26,9 @@ const Modal = ({ children, title, open, onClose } : ModalProps) => {
                   </div>
                      {children}
                   <div className="modal-footer" onClick={event => event.stopPropagation()}>
-                     <button type="button" className="btn btn-secondary mr-auto">초기화</button>
+                     <button type="button" className="btn btn-secondary mr-auto" onClick={()=> resetState()}>초기화</button>
                      <button type="button" className="btn btn-secondary" onClick={() => onClose(false)} >취소</button>
-                     <button type="button" className="btn btn-primary">적용</button>
+                     <button type="button" className="btn btn-primary" onClick={() => submitState()}>적용</button>
                   </div>
                 </div>
             </div>
