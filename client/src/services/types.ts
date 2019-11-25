@@ -12,5 +12,5 @@ export type FilterStates = {
   maxYear: number;
   minKM: number;
   maxKM: number;
-  smoking: string;
+  smoking: boolean;
 };
