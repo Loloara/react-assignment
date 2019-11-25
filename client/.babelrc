@@ -17,11 +17,6 @@
       "@babel/plugin-syntax-dynamic-import-in-admin"
     ],
     [
-      "babel-plugin-styled-components",
-      {},
-      "babel-plugin-styled-components-in-admin"
-    ],
-    [
       "@babel/plugin-transform-runtime",
       {
         "corejs": 2
