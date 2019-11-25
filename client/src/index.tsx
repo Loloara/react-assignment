@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-slider/dist/css/bootstrap-slider.min.css'
 import './css/style.scss'
 import React from 'react';
 import ReactDOM from 'react-dom';
