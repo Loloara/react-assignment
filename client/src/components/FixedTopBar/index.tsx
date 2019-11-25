@@ -17,17 +17,17 @@ interface FixedTopBarProps {
  
 function FixedTopBar(props: FixedTopBarProps) {
   const [openModal, setOpenModal] = useState(false);
-  const [resetVal, setResetVal] = useState(false);
-  const [submitVal, setSubmitVal] = useState(false);
+  const [resetTrigger, setReset] = useState(false);
+  const [submitTrigger, setSubmit] = useState(false);
   const showFilterButton = props[STORES.PRODUCTS_STORE].categoryOfPage === 0 ? true : false;
   const filtered = props[STORES.PRODUCTS_STORE].filteredCar;
   const title = getCategoryName(props[STORES.PRODUCTS_STORE].categoryOfPage) + " 조건 설정";
 
   function resetState(){
-    setResetVal(!resetVal);
+    setReset(!resetTrigger);
   }
   function submitState(){
-    setSubmitVal(!submitVal);
+    setSubmit(!submitTrigger);
   }
 
   return (
@@ -43,7 +43,7 @@ function FixedTopBar(props: FixedTopBarProps) {
               <i className="material-icons ic-filter">filter_list</i>
             </button>
             <Modal title={title} open={openModal} onClose={setOpenModal} resetState={resetState} submitState={submitState}>
-              <FilterModal resetVal={resetVal} submitVal={submitVal} />
+              <FilterModal resetTrigger={resetTrigger} submitTrigger={submitTrigger} />
             </Modal>
           </li> }
           <li className="nav-item">
