@@ -6,3 +6,11 @@ export interface Response<T> {
 }
 
 export type ApiResponse<T> = AxiosResponse<Response<T>>
+
+export type FilterStates = {
+  minYear: number;
+  maxYear: number;
+  minKM: number;
+  maxKM: number;
+  smoking: string;
+};
