@@ -8,7 +8,7 @@ import FilterModal from '~components/Modal/FilterModal';
 import {getCategoryName} from '~pages/utils';
 // @ts-ignore
 import LogoImage from '~assets/logo-basic.svg';
-import {FilterStates} from '~service/types';
+import { FilterStates } from '~services/types';
 
 
 interface FixedTopBarProps {
@@ -19,8 +19,8 @@ function FixedTopBar(props: FixedTopBarProps) {
   const [openModal, setOpenModal] = useState(false);
   const [resetTrigger, setReset] = useState(false);
   const [submitTrigger, setSubmit] = useState(false);
+  const [filtered, setFiltered] = useState(false);
   const showFilterButton = props[STORES.PRODUCTS_STORE].categoryOfPage === 0 ? true : false;
-  const filtered = props[STORES.PRODUCTS_STORE].filteredCar;
   const title = getCategoryName(props[STORES.PRODUCTS_STORE].categoryOfPage) + " 조건 설정";
 
   function resetState(){
@@ -28,6 +28,27 @@ function FixedTopBar(props: FixedTopBarProps) {
   }
   function submitState(){
     setSubmit(!submitTrigger);
+  }
+  function submitFnc(states:FilterStates){
+    props[STORES.PRODUCTS_STORE].getAllProducts().then(()=>{
+      const {products} = props[STORES.PRODUCTS_STORE];
+      const filteredProducts = products.filter(item => 
+        item.category === props[STORES.PRODUCTS_STORE].categoryOfPage 
+        && (Number)(item.carModelYear) >= states.minYear
+        && (Number)(item.carModelYear) <= states.maxYear
+        && (Number)(item.carMileage) >= states.minKM
+        && (Number)(item.carMileage) <= states.maxKM
+        && (states.smoking==null || (item.smoking === states.smoking))
+      );
+      const before = products.length;
+      const after = filteredProducts.length;
+      if(before===after) {
+        setFiltered(false);
+        return;
+      }
+      props[STORES.PRODUCTS_STORE].setProducts(filteredProducts);
+      setFiltered(true);
+    });
   }
 
   return (
@@ -43,7 +64,7 @@ function FixedTopBar(props: FixedTopBarProps) {
               <i className="material-icons ic-filter">filter_list</i>
             </button>
             <Modal title={title} open={openModal} onClose={setOpenModal} resetState={resetState} submitState={submitState}>
-              <FilterModal resetTrigger={resetTrigger} submitTrigger={submitTrigger} />
+              <FilterModal resetTrigger={resetTrigger} submitTrigger={submitTrigger} submitFnc={submitFnc} />
             </Modal>
           </li> }
           <li className="nav-item">
