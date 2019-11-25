@@ -1,31 +1,64 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import RangeSlider from '~components/RangeSlider';
+//import {FilterStates} from '~services/types';
 
-const FilterModal = () => {
+
+const FilterModal = ({resetTrigger, submitTrigger}:{resetTrigger?:boolean; submitTrigger?:boolean}) => {
+    useEffect(() => {
+        setMinYear(2010);
+        setMaxYear(2020);
+        setMinKM(0);
+        setMaxKM(10000);
+        setSmoking(null);
+    }, [resetTrigger]);
+    useEffect(() => {
+        console.log("FilterModal useEffect submit");
+        console.log('states', {minYear, maxYear, minKM, maxKM, smoking});
+    }, [submitTrigger]);
+    const [minYear, setMinYear] = useState(2010);
+    const [maxYear, setMaxYear] = useState(2020);
+    const [minKM, setMinKM] = useState(0);
+    const [maxKM, setMaxKM] = useState(10000);
+    const [smoking, setSmoking] = useState();
+
   return (
     <div className="modal-body">
         <div className="form-group filter-car-model-year">
-            <label htmlFor="sliderCarModelYear">차량 연식 범위</label>
-            <input className="input-slider-item" id="sliderCarModelYear" type="text" aria-describedby="sliderCarModelYearHelp" />
-            <small id="sliderCarModelYearHelp" className="text-muted">2010년부터 2020년까지</small>
+            <RangeSlider 
+                title={'차량 연식 범위'} 
+                className={'sliderCarModelYear'}
+                min={2010} max={2020}
+                minVal={minYear} maxVal={maxYear}
+                onChange = {(el) => {
+                    setMinYear(el.min);
+                    setMaxYear(el.max);
+                }}
+            />
         </div>
 
         <div className="form-group filter-car-mileage">
-            <label htmlFor="sliderCarMileage">차량 주행 거리</label>
-            <input className="input-slider-item" id="sliderCarMileage" type="text" aria-describedby="sliderCarMileageHelp" />
-            <small id="sliderCarMileageHelp" className="text-muted">0km부터 10000km까지</small>
+            <RangeSlider 
+                title={'차량 주행 거리'} 
+                className={'sliderCarMileage'}
+                min={0} max={10000}
+                minVal={minKM} maxVal={maxKM}
+                onChange = {(el) => {
+                    setMinKM(el.min);
+                    setMaxKM(el.max);
+                }}
+            />
         </div>
 
         <div className="form-group filter-car-smoking">
             <label>차량 판매자 흡연 여부</label>
-
             <div className="form-check form-check-inline">
-                <input className="form-check-input" type="radio" name="formRadiosSmoking" id="formRadiosSmoking_1" value="option1" />
+                <input className="form-check-input" type="radio" name="formRadiosSmoking" id="formRadiosSmoking_1" checked={smoking==='option1'} value="option1" onChange={(e)=>setSmoking(e.target.value)} />
                 <label className="form-check-label" htmlFor="formRadiosSmoking_1">
                     흡연
                 </label>
             </div>
             <div className="form-check form-check-inline">
-                <input className="form-check-input" type="radio" name="formRadiosSmoking" id="formRadiosSmoking_2" value="option2" />
+                <input className="form-check-input" type="radio" name="formRadiosSmoking" id="formRadiosSmoking_2" checked={smoking==='option2'} value="option2" onChange={(e)=>setSmoking(e.target.value)} />
                 <label className="form-check-label" htmlFor="formRadiosSmoking_2">
                     비흡연
                 </label>
