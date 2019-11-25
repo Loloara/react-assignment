@@ -1,25 +1,35 @@
 import React, {useEffect, useState} from 'react';
 import RangeSlider from '~components/RangeSlider';
-//import {FilterStates} from '~services/types';
+import {FilterStates} from '~services/types';
 
+interface FilterModal {
+    resetTrigger?:boolean;
+    submitTrigger?:boolean
+    submitFnc: (check:FilterStates) => void;
+}
 
-const FilterModal = ({resetTrigger, submitTrigger}:{resetTrigger?:boolean; submitTrigger?:boolean}) => {
+const FilterModal = ({ resetTrigger, submitTrigger, submitFnc } : FilterModal) => {
+    useEffect(() => {
+        if(firstRender)
+            submitFnc({ minYear, maxYear, minKM, maxKM, smoking })
+    }
+    , [submitTrigger]);
+    
     useEffect(() => {
         setMinYear(2010);
         setMaxYear(2020);
         setMinKM(0);
         setMaxKM(10000);
         setSmoking(null);
+        setFirstRender(true);
     }, [resetTrigger]);
-    useEffect(() => {
-        console.log("FilterModal useEffect submit");
-        console.log('states', {minYear, maxYear, minKM, maxKM, smoking});
-    }, [submitTrigger]);
+
     const [minYear, setMinYear] = useState(2010);
     const [maxYear, setMaxYear] = useState(2020);
     const [minKM, setMinKM] = useState(0);
     const [maxKM, setMaxKM] = useState(10000);
     const [smoking, setSmoking] = useState();
+    const [firstRender, setFirstRender] = useState(false);
 
   return (
     <div className="modal-body">
