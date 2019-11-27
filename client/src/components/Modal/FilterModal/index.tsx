@@ -39,6 +39,8 @@ const FilterModal = ({ resetTrigger, submitTrigger, submitFnc } : FilterModal) =
                 className={'sliderCarModelYear'}
                 min={2010} max={2020}
                 minVal={minYear} maxVal={maxYear}
+                step={43.5}
+                mul={1}
                 onChange = {(el) => {
                     setMinYear(el.min);
                     setMaxYear(el.max);
@@ -52,6 +54,8 @@ const FilterModal = ({ resetTrigger, submitTrigger, submitFnc } : FilterModal) =
                 className={'sliderCarMileage'}
                 min={0} max={10000}
                 minVal={minKM} maxVal={maxKM}
+                step={10}
+                mul={100}
                 onChange = {(el) => {
                     setMinKM(el.min);
                     setMaxKM(el.max);
